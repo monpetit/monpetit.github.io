@@ -15,11 +15,21 @@
   pageRef = "posts"
   weight = 10
 
-[[main]]
-  identifier = "web"
-  pre = "link"
-  url = "https://noneun.com"
-  weight = 40
+ [[main]]
+   name = "Tags"
+   pageRef = "tags"
+   weight = 20
+
+ [[main]]
+   name = "Categories"
+   pageRef = "categories"
+   weight = 30
+
+# [[main]]
+#   identifier = "web"
+#   pre = "link"
+#   url = "https://noneun.com"
+#   weight = 40
 
 [[main]]
   identifier = "github"
@@ -27,11 +37,11 @@
   url = "https://github.com/monpetit"
   weight = 50
 
-[[main]]
-  identifier = "twitter"
-  pre = "twitter"
-  url = "https://twitter.com/monpetit"
-  weight = 60
+# [[main]]
+#   identifier = "twitter"
+#   pre = "twitter"
+#   url = "https://twitter.com/monpetit"
+#   weight = 60
 
 
 # -- Footer Menu --
@@ -39,7 +49,7 @@
 # the copyright notice. Configure as per the main menu above.
 
 
- [[footer]]
-   name = "Tags"
-   pageRef = "tags"
-   weight = 10
+#  [[footer]]
+#    name = "Tags"
+#    pageRef = "tags"
+#    weight = 10
