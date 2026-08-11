@@ -18,19 +18,19 @@
 [[main]]
   identifier = "web"
   pre = "link"
-  url = "https://nunocoracao.github.io/blowfish/"
+  url = "https://noneun.com"
   weight = 40
 
 [[main]]
   identifier = "github"
   pre = "github"
-  url = "https://github.com/nunocoracao/blowfish"
+  url = "https://github.com/monpetit"
   weight = 50
 
 [[main]]
   identifier = "twitter"
   pre = "twitter"
-  url = "https://twitter.com/burufugu"
+  url = "https://twitter.com/monpetit"
   weight = 60
 
 

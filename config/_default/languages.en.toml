@@ -1,5 +1,5 @@
-languageCode = "en"
-languageName = "English"
+locale = "en"
+label = "English"
 weight = 1
 title = "Project Noneun"
 contentDir = "content/en"
@@ -16,7 +16,7 @@ dateFormat = "2 January 2006"
   email = "monpetit@noneun.com"
   image = "img/66f9e56e-7596-4472-8b18-d301de103530-square.png"
   headline = "글쎄 뭐라고 하지?"
-  bio = "A little bit about you"
+  bio = "Just a human"
 
     [[params.author.links]]
     link = "https://noneun.com"
