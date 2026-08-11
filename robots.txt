@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://monpetit.github.io/sitemap.xml
