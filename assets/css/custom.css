@@ -1,0 +1,42 @@
+@font-face {
+  font-family: 'Pretendard';
+  src: url('https://cdn.jsdelivr.net/npm/pretendard/dist/web/variable/woff2/PretendardVariable.woff2')
+    format('woff2-variations');
+  font-weight: 45 920;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'SUIT';
+  src: url('https://cdn.jsdelivr.net/gh/sunn-us/SUIT/fonts/variable/woff2/SUIT-Variable.woff2')
+    format('woff2-variations');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* 팀 페이지 테이블 전용: 숫자는 SUIT, 일반 문자는 Pretendard */
+@font-face {
+  font-family: 'TeamTableMixed';
+  src: url('https://cdn.jsdelivr.net/gh/sunn-us/SUIT/fonts/variable/woff2/SUIT-Variable.woff2')
+    format('woff2-variations');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+  unicode-range:
+    U+0030-0039,
+    U+0025,
+    U+002E,
+    U+002C,
+    U+002D,
+    U+002B,
+    U+2212,
+    U+002F,
+    U+003A,
+    U+0028-0029;
+}
+
+html {
+    font-family: 'TeamTableMixed', 'Noto Sans', Roboto, 'Pretendard', 'Segoe UI', sans, sans-serif;
+}
