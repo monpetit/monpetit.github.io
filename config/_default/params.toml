@@ -9,7 +9,7 @@ fathomAnalytics = { }
 verification = { }
 
 [header]
-layout = "basic"
+layout = "fixed"
 
 [footer]
 showCopyright = true

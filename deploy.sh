@@ -4,7 +4,7 @@ set -e
 # 1. main 브랜치에서 최신 글 빌드
 echo ">>> 빌드 시작..."
 git checkout main
-hugo --minify
+hugo --gc --minify
 
 # 2. gh-pages 브랜치가 worktree로 연결되어 있는지 확인
 # if [ ! -d "public/.git" ]; then
