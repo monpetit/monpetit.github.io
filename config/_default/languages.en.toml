@@ -15,15 +15,15 @@ dateFormat = "2 January 2006"
   name = "Dogma™"
   email = "monpetit@noneun.com"
   image = "img/66f9e56e-7596-4472-8b18-d301de103530-square.png"
-  headline = "글쎄 뭐라고 하지?"
+  headline = 'Play is not "ordinary" or "real" life. - 	Johan Huizinga'
   bio = "Just a human"
 
     [[params.author.links]]
-    link = "https://noneun.com"
+    reddit = "https://www.reddit.com/user/monpetit/"
 
     [[params.author.links]]
     github = "https://github.com/monpetit"
 
-    [[params.author.links]]
-    x-twitter = "https://twitter.com/monpetit"
+    # [[params.author.links]]
+    # x-twitter = "https://twitter.com/monpetit"
 

@@ -25,11 +25,11 @@
    pageRef = "categories"
    weight = 30
 
-# [[main]]
-#   identifier = "web"
-#   pre = "link"
-#   url = "https://noneun.com"
-#   weight = 40
+[[main]]
+  identifier = "reddit"
+  pre = "reddit"
+  url = "https://www.reddit.com/user/monpetit/"
+  weight = 40
 
 [[main]]
   identifier = "github"

@@ -37,6 +37,22 @@
     U+0028-0029;
 }
 
+@font-face {
+    font-family: 'SuitMixed';
+
+    src: url('https://cdn.jsdelivr.net/gh/sunn-us/SUIT/fonts/variable/woff2/SUIT-Variable.woff2')
+         format('woff2-variations');
+
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+
+    unicode-range:
+        U+0000-024F,   /* Latin + Latin Extended */
+        U+1E00-1EFF,   /* Latin Extended Additional */
+        U+FB00-FB06;   /* Latin ligatures */
+}
+
 html {
-    font-family: 'TeamTableMixed', 'Noto Sans', Roboto, 'Pretendard', 'Segoe UI', sans, sans-serif;
+    font-family: 'SuitMixed', 'Malgun Gothic', 'Noto Sans', Roboto, Pretendard, sans, sans-serif;
 }
