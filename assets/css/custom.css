@@ -53,6 +53,26 @@
         U+FB00-FB06;   /* Latin ligatures */
 }
 
+
+@font-face {
+    font-family: "ITC Medea W01 Extra Bold";
+    src: url("https://db.onlinewebfonts.com/t/661bf1532b87a1df22906f51cfe17e93.woff2") format("woff2"),
+         url("https://db.onlinewebfonts.com/t/661bf1532b87a1df22906f51cfe17e93.woff") format("woff");
+}
+
 html {
     font-family: 'SuitMixed', 'Malgun Gothic', 'Noto Sans', Roboto, Pretendard, sans, sans-serif;
 }
+
+.main-menu a[href="/"] {
+    /* font-family: "Tempus Sans ITC", sans-serif; */
+    font-family: "ITC Medea W01 Extra Bold", Pretendard, sans-serif;
+    font-size: 1.25rem;
+    font-weight: 900;
+}
+
+/*
+h1 {
+    font-family: "ITC Medea W01 Extra Bold", Pretendard, sans-serif;
+}
+*/
