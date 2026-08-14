@@ -71,6 +71,11 @@ html {
     font-weight: 900;
 }
 
+.main-page-author-name {
+    font-family: "ITC Medea W01 Extra Bold", Pretendard, sans-serif;
+    /* font-size: 2.25rem; */
+    /* font-weight: 900; */
+}
 /*
 h1 {
     font-family: "ITC Medea W01 Extra Bold", Pretendard, sans-serif;

@@ -1,0 +1,86 @@
+{{ $disableImageOptimization := .Site.Params.disableImageOptimization | default false }}
+<article
+  class="{{ if not .Site.Params.homepage.showRecent }}
+    h-full
+  {{ end }} flex flex-col items-center justify-center text-center">
+  <header class="relative px-1 py-1 flex flex-col items-center mb-3">
+    {{ with .Site.Params.Author.image }}
+      {{ $authorImage := "" }}
+      {{ if or (strings.HasPrefix . "http:") (strings.HasPrefix . "https:") }}
+        {{ $authorImage = resources.GetRemote . }}
+      {{ else }}
+        {{ $authorImage = resources.Get . }}
+      {{ end }}
+      {{ if $authorImage }}
+        {{ $final := $authorImage }}
+        {{ $squareImage := $authorImage }}
+        {{ if not (or $disableImageOptimization (eq $authorImage.MediaType.SubType "svg")) }}
+          {{ $final = $authorImage.Fill (print "288x288 q" ( $.Site.Params.Author.imagequality | default "96" )) }}
+          {{ $shortSide := int (math.Min $authorImage.Width $authorImage.Height) }}
+          {{ $squareImage = $authorImage.Crop (printf "%dx%d" $shortSide $shortSide ) }}
+        {{ end }}
+        <img
+          class="mb-2 h-36 w-36 rounded-full"
+          width="144"
+          height="144"
+          alt="{{ $.Site.Params.Author.name | default `Author` }}"
+          src="{{ $final.RelPermalink }}"
+          data-zoom-src="{{ $squareImage.RelPermalink }}">
+      {{ end }}
+    {{ end }}
+    <h1 class="text-4xl font-extrabold main-page-author-name dark:text-white">
+      {{ .Site.Params.Author.name | default .Site.Title }}
+    </h1>
+    <div id="random-display-box">
+    {{ with .Site.Params.Author.headline }}
+      <h2 class="text-xl text-neutral-500 dark:text-neutral-400">
+        {{ . | markdownify }}
+      </h2>
+    {{ end }}
+    </div>
+    <div class="mt-1 text-2xl">
+      {{ partialCached "author-links.html" . }}
+    </div>
+  </header>
+  <section class="prose dark:prose-invert w-full">{{ .Content }}</section>
+</article>
+<section>
+  {{ partial "recent-articles/main.html" . }}
+</section>
+
+<script type="text/javascript">
+  const headlines = [
+    "Play is the highest form of research. - Johan Huizinga",
+    "The play element in culture is a primary and necessary condition of the generation of culture. - Johan Huizinga",
+    "Play is not \"ordinary\" or \"real\" life. - Johan Huizinga",
+    "If we are to preserve culture we must continue to create it. - Johan Huizinga",
+    "Play is a uniquely adaptive act, not subordinate to some other adaptive act, but with a special function of its own in human experience. - Johan Huizinga",
+    "History is the interpretation of the significance that the past has for us. - Johan Huizinga",
+    "The eternal gulf between being and idea can only be bridged by the rainbow of imagination. - Johan Huizinga",
+    "You can deny, if you like, nearly all abstractions: justice, beauty, truth, goodness, mind, God. You can deny seriousness, but not play. - Johan Huizinga",
+    "Life must be lived as play, playing certain games, making sacrifices, singing and dancing, and then a man will be able to propitiate the gods, and defend himself against his enemies, and win in the contest. - Johan Huizinga",
+    "The outlaw, the revolutionary, the cabbalist or member of a secret society, indeed heretics of all kinds are of a highly associative if not sociable disposition, and a certain element of play is prominent in all their doings. - Johan Huizinga",
+    "Play is battle and battle is play. - Johan Huizinga",
+    "The Japanese samurai held the view that what was serious for the common man was but a game for the valiant. - Johan Huizinga"
+  ];
+
+  // Function to get a random headline from the array
+  function getRandomHeadline() {
+    const randomIndex = Math.floor(Math.random() * headlines.length);
+    return headlines[randomIndex];
+  }
+
+  // Function to update the headline in the DOM
+  function updateHeadline() {
+    const headlineElement = document.querySelector("#random-display-box h2");
+    if (headlineElement) {
+      headlineElement.textContent = getRandomHeadline();
+    }
+  }
+
+  // Update the headline on page load
+  document.addEventListener("DOMContentLoaded", updateHeadline);
+
+  // Change headline every 10 seconds
+  setInterval(updateHeadline, 10000);
+</script>
