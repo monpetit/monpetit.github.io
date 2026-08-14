@@ -8,7 +8,7 @@ contentDir = "content/en"
 displayName = "EN"
 isoCode = "en"
 rtl = false
-description = "노는 프로젝트"
+description = "노는 프로젝트: 프로그래밍, 컴퓨팅, 스포츠, 게임, 영화, 책, 음악 그리고 삶에 대한, 별로 중요하지 않은 이야기들"
 dateFormat = "2 January 2006"
 
   [params.author]

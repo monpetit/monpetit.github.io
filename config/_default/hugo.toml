@@ -3,6 +3,8 @@ defaultContentLanguage = "en"
 enableRobotsTXT = true
 baseURL = "https://monpetit.github.io"
 
+googleAnalytics = "G-9FYDRZ1WGJ"
+
 [pagination]
 pagerSize = 20
 summaryLength = 30
