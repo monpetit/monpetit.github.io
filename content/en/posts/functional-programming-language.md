@@ -85,19 +85,19 @@ let result =
 
 참고로 ML 언어들의 계보를 보면 이렇다.
 
-```text
-ML
- ├─ Standard ML (SML/NJ, Ploy/ML, Moscow ML, SML#)
- │     └─ Alice ML, Concurrent ML, CakeML
- │
- └─ OCaml
-       │
-       └── F#에 상당한 영향을 줌
-```
+{{< mermaid >}}
+flowchart TD
+    ML[ML] --> SML["Standard ML<br/>(SML/NJ, Poly/ML, Moscow ML, SML#)"]
+    SML --> AliceML[Alice ML]
+    SML --> ConcurrentML[Concurrent ML]
+    SML --> CakeML[CakeML]
+    ML --> OCaml[OCaml]
+    OCaml --> FSharp[F#에 상당한 영향을 줌]
+{{< /mermaid >}}
 
 F#은 특히 **OCaml의 영향을 강하게 받은 .NET용 함수형 언어**라고 생각하면 이해하기 쉽다. F#의 초기 설계에는 OCaml의 영향을 받은 부분이 상당히 많다.
 
-그런데 두 언어를 실제로 오래 사용하다 보면 **"문법은 비슷한데 느낌은 꽤 다르다"**는 것도 느끼게 된다.
+그런데 두 언어를 실제로 오래 사용하다 보면 "**문법은 비슷한데 느낌은 꽤 다르다**"는 것도 느끼게 된다.
 
 예를 들어 OCaml은 전통적인 ML 계열의 문법을 좀 더 강하게 유지한다.
 
@@ -163,15 +163,13 @@ let text = System.String.Join(", ", ["A"; "B"; "C"])
 
 그리고 요즘 많이 쓰는 Rust나 Elixir를 쓰는 개발자라면 재미있는 공통점도 많이 발견할 수 있다.
 
-```text
-OCaml ────┐
-          ├── 함수형 + 정적 타입 + 패턴 매칭
-F# ───────┤
-          │
-Rust ─────┤
-          │
-Elixir ───┘
-```
+{{< mermaid >}}
+flowchart LR
+    OCaml[OCaml] --> Common[함수형 + 정적 타입 + 패턴 매칭]
+    FSharp[F#] --> Common
+    Rust[Rust] --> Common
+    Elixir[Elixir] --> Common
+{{< /mermaid >}}
 
 물론 Rust는 ML 언어가 아니고 Elixir는 동적 타입이므로 같은 계열이라고 할 수는 없다. 하지만 **대수적 데이터 타입, 패턴 매칭, 함수 중심 설계, 불변성** 같은 개념을 접하다 보면 서로 통하는 부분이 상당히 많다.
 
@@ -191,7 +189,7 @@ match result {
 
 이 사고방식 자체가 ML 계열의 전통과 아주 가깝기 때문이다.
 
-그래서 한마디로 정리하면 **"F#은 OCaml과 닮은 게 아니라, 실제로 OCaml과 같은 ML 계보에서 파생된 언어"**라고 보는 게 가장 정확하다. 다만 F#은 .NET/C# 세계에 적응하면서 꽤 독자적인 방향으로 발전한 언어라고 보면 된다.
+그래서 한마디로 정리하면 "**F#은 OCaml과 닮은 게 아니라, 실제로 OCaml과 같은 ML 계보에서 파생된 언어**"라고 보는 게 가장 정확하다. 다만 F#은 .NET/C# 세계에 적응하면서 꽤 독자적인 방향으로 발전한 언어라고 보면 된다.
 
 
 ---
@@ -362,17 +360,13 @@ Haskell은
 
 팀 전체가 Haskell을 사용하기로 결정하면:
 
-```text
-언어 학습
-    ↓
-라이브러리 학습
-    ↓
-함수형 사고방식 학습
-    ↓
-typeclass / Monad / effect 이해
-    ↓
-Haskell 특유의 idiom 학습
-```
+{{< mermaid >}}
+flowchart TD
+    A[언어 학습] --> B[라이브러리 학습]
+    B --> C[함수형 사고방식 학습]
+    C --> D[typeclass / Monad / effect 이해]
+    D --> E[Haskell 특유의 idiom 학습]
+{{< /mermaid >}}
 
 이라는 비용을 치러야 한다.
 
@@ -516,21 +510,19 @@ Int -> IO Int
 
 Haskell은 개념적으로 프로그램을 이렇게 나눈다.
 
-```text
-                 순수한 세계
-             ┌─────────────────┐
-             │  Int -> Int     │
-             │  String -> Bool │
-             │  [Int] -> Int   │
-             └────────┬────────┘
-                      │
-                      ▼
-             ┌──────────────────┐
-             │      IO          │
-             │  파일 / 네트워크   │
-             │  화면 / 키보드     │
-             └──────────────────┘
-```
+{{< mermaid >}}
+flowchart TD
+    subgraph Pure[순수한 세계]
+        P1[Int -> Int]
+        P2[String -> Bool]
+        P3["[Int] -> Int"]
+    end
+    subgraph IOBox[IO]
+        IO1[파일 / 네트워크]
+        IO2[화면 / 키보드]
+    end
+    Pure --> IOBox
+{{< /mermaid >}}
 
 **순수한 함수 → IO를 직접 수행할 수 없음**
 
@@ -556,21 +548,15 @@ main = do
 
 `main`은 IO를 담당한다.
 
-```text
-사용자 입력
-    ↓
-   IO
-    ↓
-  Int 값
-    ↓
-double :: Int -> Int
-    ↓
-  Int 값
-    ↓
-   IO
-    ↓
-화면 출력
-```
+{{< mermaid >}}
+flowchart TD
+    A[사용자 입력] --> B[IO]
+    B --> C[Int 값]
+    C --> D[double :: Int -> Int]
+    D --> E[Int 값]
+    E --> F[IO]
+    F --> G[화면 출력]
+{{< /mermaid >}}
 
 이게 Haskell이 말하는 **순수성과 부작용의 분리**다.
 
@@ -586,43 +572,26 @@ double :: Int -> Int
 
 나쁜(?) 구조는 모든 로직이 DB에 직접 접근하는 것이다.
 
-```text
-DB 조회
- ↓
-계산
- ↓
-조건 판단
- ↓
-DB 조회
- ↓
-계산
- ↓
-HTTP 응답
-```
+{{< mermaid >}}
+flowchart TD
+    A[DB 조회] --> B[계산]
+    B --> C[조건 판단]
+    C --> D[DB 조회]
+    D --> E[계산]
+    E --> F[HTTP 응답]
+{{< /mermaid >}}
 
 Haskell에서는 이런 식으로 나누는 것을 권장한다.
 
-```text
-          IO 영역
-             │
-       DB에서 데이터 가져옴
-             │
-             ▼
-       순수 함수들에게 전달
-             │
-       ┌─────┴─────┐
-       ▼           ▼
-    계산 A       계산 B
-       │           │
-       └─────┬─────┘
-             ▼
-            결과
-             │
-             ▼
-          IO 영역
-             │
-          HTTP 응답
-```
+{{< mermaid >}}
+flowchart TD
+    IO1[IO 영역<br/>DB에서 데이터 가져옴] --> Pure[순수 함수들에게 전달]
+    Pure --> CalcA[계산 A]
+    Pure --> CalcB[계산 B]
+    CalcA --> Result[결과]
+    CalcB --> Result
+    Result --> IO2[IO 영역<br/>HTTP 응답]
+{{< /mermaid >}}
 
 그러니까 **비즈니스 로직은 순수 함수로 만들고, 외부 세계와 접촉하는 부분만 IO로 만든다**는 것이다.
 
@@ -689,13 +658,10 @@ x <- getNumber
 
 즉,
 
-```text
-IO Int
-   │
-   │ 실행
-   ▼
- Int
-```
+{{< mermaid >}}
+flowchart TD
+    IOInt[IO Int] -->|실행| Int[Int]
+{{< /mermaid >}}
 
 라는 관계가 있다.
 
@@ -776,22 +742,12 @@ let x = expensiveComputation
 
 대략:
 
-```text
-x
-│
-▼
-┌──────────────┐
-│    thunk     │
-│ computation  │
-└──────────────┘
-       │
-       │ 실제 값이 필요해짐
-       ▼
-   계산 실행
-       │
-       ▼
-    결과 저장
-```
+{{< mermaid >}}
+flowchart TD
+    X[x] --> Thunk[thunk<br/>computation]
+    Thunk -->|실제 값이 필요해짐| Calc[계산 실행]
+    Calc --> Result[결과 저장]
+{{< /mermaid >}}
 
 여기에는
 
@@ -813,33 +769,19 @@ x
 
 strict한 언어에서는:
 
-```text
-foo()
- ↓
-계산
- ↓
-결과
- ↓
-다음 코드
-```
+{{< mermaid >}}
+flowchart TD
+    Foo["foo()"] --> Calc[계산] --> Result[결과] --> Next[다음 코드]
+{{< /mermaid >}}
 
 라는 실행 흐름을 생각하기 쉽다.
 
 그런데 lazy 언어에서는:
 
-```text
-foo()
- ↓
-일단 thunk
- ↓
-...
- ↓
-...
- ↓
-어느 순간 값이 필요함
- ↓
-갑자기 계산
-```
+{{< mermaid >}}
+flowchart TD
+    Foo["foo()"] --> Thunk[일단 thunk] --> Dots1[...] --> Dots2[...] --> Need[어느 순간 값이 필요함] --> Sudden[갑자기 계산]
+{{< /mermaid >}}
 
 이 될 수 있다. 따라서 성능 문제가 **코드에서 보이는 위치와 실제 비용이 발생하는 위치가 달라질 수 있다.** 이게 상당히 중요하다.
 
@@ -851,19 +793,10 @@ Haskell에서 악명 높은 문제가 **space leak**이다.
 
 예를 들어 엄청난 양의 계산을 "나중에 하자"고 미뤄놓으면,
 
-```text
-작은 값
-   ↓
-thunk
-   ↓
-thunk
-   ↓
-thunk
-   ↓
-thunk
-   ↓
-...
-```
+{{< mermaid >}}
+flowchart TD
+    A[작은 값] --> T1[thunk] --> T2[thunk] --> T3[thunk] --> T4[thunk] --> Dots[...]
+{{< /mermaid >}}
 
 이런 식으로 아직 계산하지 않은 것들이 메모리에 계속 살아 있을 수 있다.
 
@@ -932,15 +865,10 @@ result =
 
 예를 들어 서버 프로그램에서:
 
-```text
-request
- ↓
-DB
- ↓
-JSON serialization
- ↓
-network
-```
+{{< mermaid >}}
+flowchart TD
+    A[request] --> B[DB] --> C[JSON serialization] --> D[network]
+{{< /mermaid >}}
 
 이런 경로의 latency를 관리해야 한다고 생각해 보자.
 
@@ -952,19 +880,10 @@ network
 
 그런데 lazy evaluation에서는 실제 계산이 나중으로 밀릴 수 있어서
 
-```text
-함수 A
- ↓
-10ms라고 생각했음
- ↓
-실제로는 thunk만 생성
- ↓
-함수 B
- ↓
-여기서 갑자기 A의 계산 발생
- ↓
-B가 40ms 걸림
-```
+{{< mermaid >}}
+flowchart TD
+    A[함수 A] --> B[10ms라고 생각했음] --> C[실제로는 thunk만 생성] --> D[함수 B] --> E[여기서 갑자기 A의 계산 발생] --> F[B가 40ms 걸림]
+{{< /mermaid >}}
 
 같은 일이 생길 수 있다.
 
@@ -1017,13 +936,11 @@ OCaml은 ML의 강력한 타입 시스템과 ADT, pattern matching 등을 가져
 
 즉,
 
-```text
-ML의 타입 시스템 / 함수형 프로그래밍
-            +
-전통적인 strict evaluation
-            ↓
-          OCaml
-```
+{{< mermaid >}}
+flowchart TD
+    A[ML의 타입 시스템 / 함수형 프로그래밍] --> OCaml[OCaml]
+    B[전통적인 strict evaluation] --> OCaml
+{{< /mermaid >}}
 
 이라는 선택을 한 셈이다.
 
@@ -1031,19 +948,17 @@ F#도 기본적으로 strict이고...
 
 반면 Haskell은
 
-```text
-ML 계열
-+
-순수성
-+
-lazy evaluation
-+
-effect를 타입으로 표현
-```
+{{< mermaid >}}
+flowchart TD
+    A[ML 계열] --> Haskell[Haskell]
+    B[순수성] --> Haskell
+    C[lazy evaluation] --> Haskell
+    D[effect를 타입으로 표현] --> Haskell
+{{< /mermaid >}}
 
 이라는 훨씬 더 급진적인 방향으로 갔다.
 
-그래서 **"Haskell은 이론적으로 더 우아하지만 현실적인 비용이 커졌다"**는 개발자들의 지적은 상당히 타당하다.
+그래서 "**Haskell은 이론적으로 더 우아하지만 현실적인 비용이 커졌다**"는 개발자들의 지적은 상당히 타당하다.
 
 다만 **lazy evaluation 하나만으로 Haskell의 산업적 한계를 설명하기보다는, `lazy evaluation + 강한 순수성 + 고급 타입 시스템 + 상대적으로 작은 생태계 + 높은 학습 비용`이 서로 겹친 결과**라고 보는 게 더 정확하다고 생각한다.
 
